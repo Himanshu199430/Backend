@@ -1,6 +1,10 @@
 name: build
 
-on: [push]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
     build:
@@ -12,3 +16,4 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install git
                 
+
