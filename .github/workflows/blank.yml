@@ -1,12 +1,18 @@
-name: Do Something That Needs Scheduled
+name: build
 
 on:
-  repository_dispatch:
-    types: do-something
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
 jobs:
-  build:
-    name: Run Some Thing
-    runs-on: ubuntu-latest
-    steps:
-      - name: Do Something
-        run: echo Doing Something...
+    build:
+        runs-on: ubuntu-18.04
+        steps:
+            - uses: actions/checkout@v1
+            - name: Install Prerequisites
+              run: |
+                sudo apt-get update
+                sudo apt-get install git
+                
